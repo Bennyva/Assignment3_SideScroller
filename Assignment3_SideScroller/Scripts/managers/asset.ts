@@ -35,7 +35,7 @@
             { id: "startBtn", src: "assets/images/buttonStart.png" },
             { id: "instructionsBtn", src: "assets/images/buttonInstructions.png" },
 
-            { id: "yay", src: "assets/sounds/pop.wav" },
+            { id: "pop", src: "assets/sounds/pop.wav" },
             { id: "thunder", src: "assets/sounds/thunder.ogg" }
 
         ];

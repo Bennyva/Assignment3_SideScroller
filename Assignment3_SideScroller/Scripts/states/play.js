@@ -1,6 +1,6 @@
 ﻿/// <reference path="../objects/gameobject.ts" />
-/// <reference path="../objects/cloud.ts" />
-/// <reference path="../objects/island.ts" />
+/// <reference path="../objects/shark.ts" />
+/// <reference path="../objects/bubble.ts" />
 /// <reference path="../objects/ocean.ts" />
 /// <reference path="../objects/Diver.ts" />
 /// <reference path="../objects/scoreboard.ts" />
@@ -8,8 +8,10 @@ var states;
 (function (states) {
     function playState() {
         ocean.update();
-        island.update();
+        bubble.update();
         Diver.update();
+
+        document.getElementById("canvas").style.cursor = "none";
 
         for (var count = 0; count < constants.CLOUD_NUM; count++) {
             clouds[count].update();
@@ -33,11 +35,11 @@ var states;
         game = new createjs.Container();
 
         ocean = new objects.Ocean(game);
-        island = new objects.Island(game);
+        bubble = new objects.Bubble(game);
         Diver = new objects.Diver(game);
 
         for (var count = 0; count < constants.CLOUD_NUM; count++) {
-            clouds[count] = new objects.Cloud(game);
+            clouds[count] = new objects.Shark(game);
         }
 
         scoreboard = new objects.Scoreboard(game);

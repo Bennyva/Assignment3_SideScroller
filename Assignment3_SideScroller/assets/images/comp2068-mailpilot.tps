@@ -189,7 +189,7 @@
         <key>fileList</key>
         <array>
             <filename>../../../../COMP2069 Intro to Graphic Programming/Lessons/Lesson 07/code/cloud.png</filename>
-            <filename>../../../../COMP2069 Intro to Graphic Programming/Lessons/Lesson 07/code/island.png</filename>
+            <filename>../../../../COMP2069 Intro to Graphic Programming/Lessons/Lesson 07/code/bubble.png</filename>
             <filename>../../../../COMP2069 Intro to Graphic Programming/Lessons/Lesson 07/code/plane1.png</filename>
             <filename>../../../../COMP2069 Intro to Graphic Programming/Lessons/Lesson 07/code/plane2.png</filename>
             <filename>../../../../COMP2069 Intro to Graphic Programming/Lessons/Lesson 07/code/plane3.png</filename>

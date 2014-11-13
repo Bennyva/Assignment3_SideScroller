@@ -6,32 +6,28 @@
 };
 var objects;
 (function (objects) {
-    // Cloud Class
-    var Cloud = (function (_super) {
-        __extends(Cloud, _super);
-        function Cloud(game) {
-            _super.call(this, "shark", game);
+    // Bubble Class
+    var Bubble = (function (_super) {
+        __extends(Bubble, _super);
+        function Bubble(game) {
+            _super.call(this, "bubble", game);
+            this.dy = 5;
             this.game.addChild(this);
             this.reset();
         }
-        Cloud.prototype.reset = function () {
+        Bubble.prototype.reset = function () {
             this.x = stage.canvas.width + this.width;
             this.y = Math.floor(Math.random() * stage.canvas.height);
-            this.dy = Math.floor(Math.random() * 3 - 2);
-            this.dx = Math.floor(Math.random() * 3 + 5);
-            //
-            //
         };
 
-        Cloud.prototype.update = function () {
-            this.x -= this.dx;
-            this.y -= this.dy;
+        Bubble.prototype.update = function () {
+            this.x -= this.dy;
             if (this.x <= (0 - this.width)) {
                 this.reset();
             }
         };
-        return Cloud;
+        return Bubble;
     })(objects.GameObject);
-    objects.Cloud = Cloud;
+    objects.Bubble = Bubble;
 })(objects || (objects = {}));
-//# sourceMappingURL=cloud.js.map
+//# sourceMappingURL=bubble.js.map

@@ -1,6 +1,6 @@
 ﻿/// <reference path="../objects/gameobject.ts" />
-/// <reference path="../objects/cloud.ts" />
-/// <reference path="../objects/island.ts" />
+/// <reference path="../objects/shark.ts" />
+/// <reference path="../objects/bubble.ts" />
 /// <reference path="../objects/ocean.ts" />
 /// <reference path="../objects/Diver.ts" />
 
@@ -9,6 +9,8 @@ module states {
     export function instructionState() {
         ocean.update();
         Diver.update();
+
+        document.getElementById("canvas").style.cursor = "none";
     }
 
     export function instruction() {

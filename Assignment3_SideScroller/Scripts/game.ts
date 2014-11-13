@@ -2,8 +2,8 @@
 /// <reference path="managers/asset.ts" />
 /// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/Diver.ts" />
-/// <reference path="objects/island.ts" />
-/// <reference path="objects/cloud.ts" />
+/// <reference path="objects/bubble.ts" />
+/// <reference path="objects/shark.ts" />
 /// <reference path="objects/ocean.ts" />
 /// <reference path="objects/scoreboard.ts" />
 /// <reference path="states/play.ts" />
@@ -15,7 +15,7 @@ var game: createjs.Container;
 
 // game objects
 var Diver: objects.Diver;
-var island: objects.Island;
+var bubble: objects.Bubble;
 var clouds = [];
 var ocean: objects.Ocean;
 var scoreboard: objects.Scoreboard;
@@ -112,46 +112,46 @@ function distance(point1: createjs.Point, point2: createjs.Point):number {
     return result;
 }
 
-// Check Collision with Diver and Island
-function planeAndIsland() {
+// Check Collision with Diver and Bubble
+function diverAndBubble() {
     var p1: createjs.Point = new createjs.Point();
     var p2: createjs.Point = new createjs.Point();
 
     p1.x = Diver.x;
     p1.y = Diver.y;
-    p2.x = island.x;
-    p2.y = island.y;
+    p2.x = bubble.x;
+    p2.y = bubble.y;
 
-    if (distance(p1, p2) <= ((Diver.height * 0.5) + (island.height * 0.5))) {
-        createjs.Sound.play("yay");
+    if (distance(p1, p2) <= ((Diver.height * 0.5) + (bubble.height * 0.5))) {
+        createjs.Sound.play("pop");
         scoreboard.score += 100;
-        island.reset();
+        bubble.reset();
     }
 }
 
-// Check Collision with Diver and Cloud
-function planeAndCloud(theCloud: objects.Cloud) {
+// Check Collision with Diver and Shark
+function diverAndShark(theShark: objects.Shark) {
     var p1: createjs.Point = new createjs.Point();
     var p2: createjs.Point = new createjs.Point();
     
 
     p1.x = Diver.x;
     p1.y = Diver.y;
-    p2.x = theCloud.x;
-    p2.y = theCloud.y;
+    p2.x = theShark.x;
+    p2.y = theShark.y;
 
-    if (distance(p1, p2) <= ((Diver.height * 0.5) + (theCloud.height * 0.5))) {
+    if (distance(p1, p2) <= ((Diver.height * 0.5) + (theShark.height * 0.5))) {
         createjs.Sound.play("thunder");
         scoreboard.lives -= 1;
-        theCloud.reset();
+        theShark.reset();
     }
 }
 
 function collisionCheck() {
-    planeAndIsland();
+    diverAndBubble();
 
     for (var count = 0; count < constants.CLOUD_NUM; count++) {
-        planeAndCloud(clouds[count]);
+        diverAndShark(clouds[count]);
     }
 }
 

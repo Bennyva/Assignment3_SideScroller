@@ -1,6 +1,6 @@
 ﻿/// <reference path="../objects/gameobject.ts" />
-/// <reference path="../objects/cloud.ts" />
-/// <reference path="../objects/island.ts" />
+/// <reference path="../objects/shark.ts" />
+/// <reference path="../objects/bubble.ts" />
 /// <reference path="../objects/ocean.ts" />
 /// <reference path="../objects/Diver.ts" />
 
@@ -21,6 +21,8 @@ module states {
         game = new createjs.Container();
 
         ocean = new objects.Ocean(game);
+
+        
 
         ScoreText = new createjs.Text(scoreboard.score.toString(), constants.GAME_FONT, constants.FONT_COLOUR);
         ScoreText.regX = ScoreText.getBounds().width * 0.5;

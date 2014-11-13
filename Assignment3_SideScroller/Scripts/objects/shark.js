@@ -6,28 +6,32 @@
 };
 var objects;
 (function (objects) {
-    // Island Class
-    var Island = (function (_super) {
-        __extends(Island, _super);
-        function Island(game) {
-            _super.call(this, "bubble", game);
-            this.dy = 5;
+    // Shark Class
+    var Shark = (function (_super) {
+        __extends(Shark, _super);
+        function Shark(game) {
+            _super.call(this, "shark", game);
             this.game.addChild(this);
             this.reset();
         }
-        Island.prototype.reset = function () {
+        Shark.prototype.reset = function () {
             this.x = stage.canvas.width + this.width;
             this.y = Math.floor(Math.random() * stage.canvas.height);
+            this.dy = Math.floor(Math.random() * 3 - 2);
+            this.dx = Math.floor(Math.random() * 3 + 5);
+            //
+            //
         };
 
-        Island.prototype.update = function () {
-            this.x -= this.dy;
+        Shark.prototype.update = function () {
+            this.x -= this.dx;
+            this.y -= this.dy;
             if (this.x <= (0 - this.width)) {
                 this.reset();
             }
         };
-        return Island;
+        return Shark;
     })(objects.GameObject);
-    objects.Island = Island;
+    objects.Shark = Shark;
 })(objects || (objects = {}));
-//# sourceMappingURL=island.js.map
+//# sourceMappingURL=shark.js.map
