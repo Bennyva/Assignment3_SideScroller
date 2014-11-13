@@ -1,0 +1,12 @@
+E:\Desktop\COMP2068-MailPilot-Build-2-master\COMP2068-MailPilot-Build-2\bin\CreateJS BoilerPlate.dll.config
+E:\Desktop\COMP2068-MailPilot-Build-2-master\COMP2068-MailPilot-Build-2\bin\CreateJS BoilerPlate.dll
+E:\Desktop\COMP2068-MailPilot-Build-2-master\COMP2068-MailPilot-Build-2\bin\CreateJS BoilerPlate.pdb
+E:\Desktop\COMP2068-MailPilot-Build-2-master\COMP2068-MailPilot-Build-2\obj\Debug\COMP2068-MailPilot-Build-2.csprojResolveAssemblyReference.cache
+E:\Desktop\COMP2068-MailPilot-Build-2-master\COMP2068-MailPilot-Build-2\obj\Debug\CreateJS BoilerPlate.dll
+E:\Desktop\COMP2068-MailPilot-Build-2-master\COMP2068-MailPilot-Build-2\obj\Debug\CreateJS BoilerPlate.pdb
+E:\Github\COMP2068-MailPilot-Build-2-master\COMP2068-MailPilot-Build-2\bin\CreateJS BoilerPlate.dll.config
+E:\Github\COMP2068-MailPilot-Build-2-master\COMP2068-MailPilot-Build-2\bin\CreateJS BoilerPlate.dll
+E:\Github\COMP2068-MailPilot-Build-2-master\COMP2068-MailPilot-Build-2\bin\CreateJS BoilerPlate.pdb
+E:\Github\COMP2068-MailPilot-Build-2-master\COMP2068-MailPilot-Build-2\obj\Debug\COMP2068-MailPilot-Build-2.csprojResolveAssemblyReference.cache
+E:\Github\COMP2068-MailPilot-Build-2-master\COMP2068-MailPilot-Build-2\obj\Debug\CreateJS BoilerPlate.dll
+E:\Github\COMP2068-MailPilot-Build-2-master\COMP2068-MailPilot-Build-2\obj\Debug\CreateJS BoilerPlate.pdb
