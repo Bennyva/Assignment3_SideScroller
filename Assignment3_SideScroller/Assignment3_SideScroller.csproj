@@ -59,6 +59,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\sounds\water.wav" />
+    <Content Include="assets\sounds\bite.wav" />
     <Content Include="bin\CreateJS BoilerPlate.dll.config" />
     <Content Include="obj\Debug\COMP2068-MailPilot-Build-2.csprojResolveAssemblyReference.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />

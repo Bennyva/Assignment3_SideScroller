@@ -4,15 +4,24 @@
 /// <reference path="../objects/ocean.ts" />
 /// <reference path="../objects/Diver.ts" />
 
-module states {
+/*
+    *Source File Name: menu.ts
+    *Author:Benjamin Vanarragon
+    *Last Modified: Nov 13th, 2014
+    *Last Author: Benjamin Vanarragon
+    *Decsription: This is the menu state. It has a button for instructions and to start the game play
+    *
+*/
 
+module states {
+    //update the diver and ocean in the background
     export function menuState() {
         ocean.update();
         Diver.update();
 
         document.getElementById("canvas").style.cursor = "none";
     }
-
+    //create menu buttons, and place them on the screen and add event listeners that call different states.
     export function Menu() {
         var startGame: createjs.Bitmap;
 

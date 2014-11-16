@@ -9,6 +9,14 @@
 /// <reference path="states/play.ts" />
 /// <reference path="states/menu.ts" />
 /// <reference path="states/gameover.ts" />
+/*
+*Source File Name: game.ts
+*Author:Benjamin Vanarragon
+*Last Modified: Nov 13th, 2014
+*Last Author: Benjamin Vanarragon
+*Decsription: This is the "main method" that runs the game and loops through the updates at 60 fps
+*
+*/
 var stage;
 var game;
 
@@ -28,6 +36,7 @@ function preload() {
     managers.Asset.loader.addEventListener("complete", init);
 }
 
+//initializes the game, called from index.html
 function init() {
     stage = new createjs.Stage(document.getElementById("canvas"));
     stage.enableMouseOver(20);
@@ -47,6 +56,7 @@ function gameLoop(event) {
     stage.update();
 }
 
+//switches the states of the game
 function changeState(state) {
     switch (state) {
         case constants.MENU_STATE:
@@ -68,6 +78,7 @@ function changeState(state) {
     }
 }
 
+//used in collision detection
 function distance(point1, point2) {
     var p1;
     var p2;
@@ -122,16 +133,17 @@ function diverAndShark(theShark) {
     p2.y = theShark.y;
 
     if (distance(p1, p2) <= ((Diver.height * 0.5) + (theShark.height * 0.5))) {
-        createjs.Sound.play("thunder");
+        createjs.Sound.play("bite");
         scoreboard.lives -= 1;
         theShark.reset();
     }
 }
 
+//this calls the above collision check functions and loops through checking for collisions
 function collisionCheck() {
     diverAndBubble();
 
-    for (var count = 0; count < constants.CLOUD_NUM; count++) {
+    for (var count = 0; count < constants.SHARK_NUM; count++) {
         diverAndShark(clouds[count]);
     }
 }

@@ -3,8 +3,17 @@
 /// <reference path="../objects/bubble.ts" />
 /// <reference path="../objects/ocean.ts" />
 /// <reference path="../objects/Diver.ts" />
+/*
+*Source File Name: instructions.ts
+*Author:Benjamin Vanarragon
+*Last Modified: Nov 13th, 2014
+*Last Author: Benjamin Vanarragon
+*Decsription: This is the instructions state that shows how to play the game, and a back button to get back to the menu
+*
+*/
 var states;
 (function (states) {
+    //update the background and diver
     function instructionState() {
         ocean.update();
         Diver.update();
@@ -13,6 +22,7 @@ var states;
     }
     states.instructionState = instructionState;
 
+    //add the title, text, and back button, also event listeners for the button
     function instruction() {
         var startGame;
 

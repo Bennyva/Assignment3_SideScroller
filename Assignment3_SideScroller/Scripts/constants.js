@@ -1,7 +1,14 @@
-﻿var constants;
+﻿/*
+*Source File Name: constants.ts
+*Author:Benjamin Vanarragon
+*Last Modified: Nov 13th, 2014
+*Last Author: Benjamin Vanarragon
+*Decsription: holds all the constans for the game
+*/
+var constants;
 (function (constants) {
     // game constants
-    constants.CLOUD_NUM = 3;
+    constants.SHARK_NUM = 3;
     constants.PLAYER_LIVES = 3;
     constants.GAME_FONT = "40px Consolas";
     constants.GAME_INSTRUCTIONS = "20px Consolas";

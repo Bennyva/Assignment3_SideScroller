@@ -1,6 +1,14 @@
-﻿var objects;
+﻿/*
+*Source File Name: scoreboard.ts
+*Author:Benjamin Vanarragon
+*Last Modified: Nov 13th, 2014
+*Last Author: Benjamin Vanarragon
+*Decsription: Adds the scoreboard to the screen and keeps track of the score
+*
+*/
+var objects;
 (function (objects) {
-    // Scoreboard Class
+    // Scoreboard Class, adds and creats it
     var Scoreboard = (function () {
         function Scoreboard(game) {
             this.labelString = "";
@@ -14,6 +22,7 @@
 
             this.game.addChild(this.label);
         }
+        //updates the score to the screen
         Scoreboard.prototype.update = function () {
             this.labelString = "Lives: " + this.lives.toString() + " Score: " + this.score.toString();
             this.label.text = this.labelString;

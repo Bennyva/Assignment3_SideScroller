@@ -4,15 +4,24 @@
 /// <reference path="../objects/ocean.ts" />
 /// <reference path="../objects/Diver.ts" />
 
-module states {
+/*
+    *Source File Name: instructions.ts
+    *Author:Benjamin Vanarragon
+    *Last Modified: Nov 13th, 2014
+    *Last Author: Benjamin Vanarragon
+    *Decsription: This is the instructions state that shows how to play the game, and a back button to get back to the menu
+    *
+*/
 
+module states {
+    //update the background and diver 
     export function instructionState() {
         ocean.update();
         Diver.update();
 
         document.getElementById("canvas").style.cursor = "none";
     }
-
+    //add the title, text, and back button, also event listeners for the button
     export function instruction() {
         var startGame: createjs.Bitmap;
 

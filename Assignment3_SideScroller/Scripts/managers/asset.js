@@ -1,4 +1,12 @@
-﻿var managers;
+﻿/*
+*Source File Name: asset.ts
+*Author:Benjamin Vanarragon
+*Last Modified: Nov 16th, 2014
+*Last Author: Benjamin Vanarragon
+*Decsription: This page loads all the assets, images, and sounds
+*
+*/
+var managers;
 (function (managers) {
     var Asset = (function () {
         function Asset() {
@@ -35,8 +43,9 @@
             { id: "ocean", src: "assets/images/ocean.png" },
             { id: "startBtn", src: "assets/images/buttonStart.png" },
             { id: "instructionsBtn", src: "assets/images/buttonInstructions.png" },
+            { id: "water", src: "assets/sounds/water.wav" },
             { id: "pop", src: "assets/sounds/pop.wav" },
-            { id: "thunder", src: "assets/sounds/thunder.ogg" }
+            { id: "bite", src: "assets/sounds/bite.wav" }
         ];
         return Asset;
     })();

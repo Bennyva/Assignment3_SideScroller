@@ -1,4 +1,13 @@
-﻿module objects {
+﻿/*
+    *Source File Name: bubbles.ts
+    *Author:Benjamin Vanarragon
+    *Last Modified: Nov 13th, 2014
+    *Last Author: Benjamin Vanarragon
+    *Decsription: This class creates the objects for the player to collect
+    *
+*/
+
+module objects {
     // Bubble Class
     export class Bubble extends objects.GameObject {
         dy: number;

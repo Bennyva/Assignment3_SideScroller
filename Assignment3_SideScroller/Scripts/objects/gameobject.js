@@ -4,6 +4,15 @@
     __.prototype = b.prototype;
     d.prototype = new __();
 };
+/*
+*Source File Name: gameobject.ts
+*Author:Benjamin Vanarragon
+*Last Modified: Nov 13th, 2014
+*Last Author: Benjamin Vanarragon
+*Decsription: This is a super class for all game objects
+*
+*/
+//creates a constructor for every game object. then the game objects will extend this
 var objects;
 (function (objects) {
     var GameObject = (function (_super) {

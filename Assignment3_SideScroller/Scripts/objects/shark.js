@@ -1,4 +1,12 @@
-﻿var __extends = this.__extends || function (d, b) {
+﻿/*
+*Source File Name: shark.ts
+*Author:Benjamin Vanarragon
+*Last Modified: Nov 13th, 2014
+*Last Author: Benjamin Vanarragon
+*Decsription: This is the shark object. creates the image, and spawns it in a random y value and makes it fly left.
+*
+*/
+var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -14,6 +22,7 @@ var objects;
             this.game.addChild(this);
             this.reset();
         }
+        //this positions it somewhere random on the right  side of the game, with a direction of left
         Shark.prototype.reset = function () {
             this.x = stage.canvas.width + this.width;
             this.y = Math.floor(Math.random() * stage.canvas.height);
@@ -23,6 +32,7 @@ var objects;
             //
         };
 
+        //moves it frame by frame
         Shark.prototype.update = function () {
             this.x -= this.dx;
             this.y -= this.dy;

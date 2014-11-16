@@ -1,4 +1,13 @@
-﻿module objects {
+﻿/*
+    *Source File Name: ocean.ts
+    *Author:Benjamin Vanarragon
+    *Last Modified: Nov 13th, 2014
+    *Last Author: Benjamin Vanarragon
+    *Decsription: Creates the ocean/ background for the game, that scrolls and updates the image
+    *
+*/
+
+module objects {
     // Ocean Class
     export class Ocean extends createjs.Bitmap {
         width: number;
@@ -14,11 +23,11 @@
             this.game.addChild(this);
             this.reset();
         }
-
+        //resets the image 
         reset() {
             this.x = 0;
         }
-
+        //updates the image frame by frame to make it appear as if its moving
         update() {
             this.x -= this.dy;
             if (this.x <= -1280) {

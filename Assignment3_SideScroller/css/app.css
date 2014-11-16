@@ -1,4 +1,14 @@
-﻿#canvas {
+﻿/*
+    *Source File Name: app.css
+    *Author:Benjamin Vanarragon
+    *Last Modified: Nov 13th, 2014
+    *Last Author: Benjamin Vanarragon
+    *Decsription: This is the CSS for the game page. Provides a neat layout for the game
+    *
+*/
+
+
+#canvas {
 
     display: block;
     margin:100px auto;

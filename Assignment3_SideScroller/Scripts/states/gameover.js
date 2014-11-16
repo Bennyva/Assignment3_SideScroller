@@ -3,6 +3,14 @@
 /// <reference path="../objects/bubble.ts" />
 /// <reference path="../objects/ocean.ts" />
 /// <reference path="../objects/Diver.ts" />
+/*
+*Source File Name: gameover.ts
+*Author:Benjamin Vanarragon
+*Last Modified: Nov 13th, 2014
+*Last Author: Benjamin Vanarragon
+*Decsription: this is the game over state, everything here is what happens when the player dies. It shows final score and a play again button
+*
+*/
 var states;
 (function (states) {
     function gameOverState() {

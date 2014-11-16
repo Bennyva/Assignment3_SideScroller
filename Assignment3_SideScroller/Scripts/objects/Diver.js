@@ -1,10 +1,17 @@
-﻿var __extends = this.__extends || function (d, b) {
+﻿/*
+*Source File Name: diver.ts
+*Author:Benjamin Vanarragon
+*Last Modified: Nov 13th, 2014
+*Last Author: Benjamin Vanarragon
+*Decsription: This creates the player for the game.
+*
+*/
+var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-// Diver Class
 var objects;
 (function (objects) {
     var Diver = (function (_super) {
@@ -14,7 +21,10 @@ var objects;
             this.y = 430;
 
             this.game.addChild(this);
+
+            createjs.Sound.play("water", 0, 0, 0, -1, 1, 0);
         }
+        //updates the player to where the mouse cursor is
         Diver.prototype.update = function () {
             this.x = stage.mouseX;
             this.y = stage.mouseY;
