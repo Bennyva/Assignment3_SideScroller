@@ -8,7 +8,7 @@
 var constants;
 (function (constants) {
     // game constants
-    constants.SHARK_NUM = 3;
+    constants.SHARK_NUM = 2;
     constants.PLAYER_LIVES = 3;
     constants.GAME_FONT = "40px Consolas";
     constants.GAME_INSTRUCTIONS = "20px Consolas";

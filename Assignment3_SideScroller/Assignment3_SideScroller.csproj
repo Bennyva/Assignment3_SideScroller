@@ -59,6 +59,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\bullet.png" />
+    <Content Include="assets\images\heartFull.png" />
+    <Content Include="assets\images\heartHalf.png" />
+    <Content Include="assets\sounds\bulletFire.wav" />
+    <Content Include="assets\sounds\gameSong.mp3" />
+    <Content Include="assets\sounds\gaspDamage.wav" />
+    <Content Include="assets\sounds\sharkDie.wav" />
     <Content Include="assets\sounds\water.wav" />
     <Content Include="assets\sounds\bite.wav" />
     <Content Include="bin\CreateJS BoilerPlate.dll.config" />
@@ -163,6 +170,8 @@
     <TypeScriptCompile Include="Scripts\lib\tweenjs.d.ts" />
     <TypeScriptCompile Include="Scripts\managers\asset.ts" />
     <TypeScriptCompile Include="Scripts\objects\breathCounter.ts" />
+    <TypeScriptCompile Include="Scripts\objects\bullet.ts" />
+    <TypeScriptCompile Include="Scripts\objects\hearts.ts" />
     <TypeScriptCompile Include="Scripts\objects\shark.ts" />
     <TypeScriptCompile Include="Scripts\objects\Diver.ts" />
     <TypeScriptCompile Include="Scripts\objects\gameobject.ts" />

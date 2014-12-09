@@ -39,18 +39,46 @@ module states {
             changeState(currentState);
         }
 
-        
+
 
         breathCounter.update();
+
+        if (bullet != null) {
+            bullet.update();
+            
+        }
+        
     }
     //creates the new objects, creates scoreboard, and adds them to the stage
     export function Play() {
+
+
+
+        
 
         game = new createjs.Container();
 
         ocean = new objects.Ocean(game);
         bubble = new objects.Bubble(game);
         Diver = new objects.Diver(game);
+
+        
+
+
+                
+                ocean.addEventListener("click", function (e) {
+
+                    DiverXY.x = Diver.x;
+                    DiverXY.y = Diver.y;
+                    if (canFire == false) {
+                        bullet = new objects.Bullet(game);
+                        createjs.Sound.play("bulletSound");
+                    }
+                    //canFire = false;
+                });
+
+            
+        
 
         for (var count = 0; count < constants.SHARK_NUM; count++) {
             clouds[count] = new objects.Shark(game);

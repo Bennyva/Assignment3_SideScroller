@@ -8,7 +8,7 @@
 
 module constants {
     // game constants
-    export var SHARK_NUM: number = 3;
+    export var SHARK_NUM: number = 2;
     export var PLAYER_LIVES: number = 3;
     export var GAME_FONT = "40px Consolas";
     export var GAME_INSTRUCTIONS = "20px Consolas";

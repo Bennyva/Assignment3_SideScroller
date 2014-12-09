@@ -45,7 +45,12 @@ var managers;
             { id: "instructionsBtn", src: "assets/images/buttonInstructions.png" },
             { id: "water", src: "assets/sounds/water.wav" },
             { id: "pop", src: "assets/sounds/pop.wav" },
-            { id: "bite", src: "assets/sounds/bite.wav" }
+            { id: "bite", src: "assets/sounds/bite.wav" },
+            { id: "bullet", src: "assets/images/bullet.png" },
+            { id: "gasp", src: "assets/sounds/gaspDamage.wav" },
+            { id: "bulletSound", src: "assets/sounds/bulletFire.wav" },
+            { id: "sharkDeath", src: "assets/sounds/sharkDie.wav" },
+            { id: "gameSong", src: "assets/sounds/gameSong.mp3" }
         ];
         return Asset;
     })();

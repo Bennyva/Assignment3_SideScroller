@@ -49,7 +49,7 @@ var states;
         instructionsTitle.y = stage.canvas.height * 0.30;
         game.addChild(instructionsTitle);
 
-        instructionsTitle = new createjs.Text("Try to collect as many points as possible. Points are \n\ngained from bubbles. Avoid sharks at all costs. When \n\nyou touch a shark you lose a life. You only have 3 \n\nlives", constants.GAME_INSTRUCTIONS, constants.FONT_COLOUR);
+        instructionsTitle = new createjs.Text("Try to collect as many points as possible. Points are \n\ngained from bubbles. Avoid sharks at all costs. When \n\nyou touch a shark you lose a life. You only have 3 \n\nlives\n\nLevel 1: Get 1000 points to get another life\n\nLevel 2:Collect bubbles to breath, get 3000 \n\npoints to move to level 3\n\nLevel 3: Click to shoot torpedos, only 1 at a time.", constants.GAME_INSTRUCTIONS, constants.FONT_COLOUR);
         instructionsTitle.x = stage.canvas.width * 0.05;
         instructionsTitle.y = stage.canvas.height * 0.50;
         game.addChild(instructionsTitle);

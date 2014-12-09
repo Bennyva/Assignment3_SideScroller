@@ -30,7 +30,7 @@ module objects {
         }
         //updates the score to the screen
         update() {
-            this.labelString = "Lives: " + this.lives.toString() + " Score: " + this.score.toString() + " Level: " + this.level.toString();
+            this.labelString = "Score: " + this.score.toString() + " Level: " + this.level.toString();
             this.label.text = this.labelString;
         }
     }

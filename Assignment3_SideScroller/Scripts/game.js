@@ -12,7 +12,7 @@
 /*
 *Source File Name: game.ts
 *Author:Benjamin Vanarragon
-*Last Modified: Dec 3rd, 2014
+*Last Modified: Dec 9th, 2014
 *Last Author: Benjamin Vanarragon
 *Decsription: This is the "main method" that runs the game and loops through the updates at 60 fps
 *
@@ -23,10 +23,12 @@ var game;
 // game objects
 var Diver;
 var bubble;
+
 var clouds = [];
 var ocean;
 var scoreboard;
 var breathCounter;
+var bullet;
 var level1 = true;
 var level2 = true;
 var breathCheck = false;
@@ -36,6 +38,15 @@ var currentStateFunction;
 var count = 0;
 var lungCapacity = 10;
 var runLoop = false;
+var DiverXY = new createjs.Point();
+var canFire = true;
+var bulletCount = 0;
+
+var fullHeart1;
+var fullHeart2;
+var fullHeart3;
+var fullHeart4;
+var fullHeart5;
 
 // Preload function
 function preload() {
@@ -61,15 +72,19 @@ function gameLoop(event) {
     //changeState(currentState);
     currentStateFunction();
     stage.update();
+    breathCounter.update();
 
     if (scoreboard.score == 0) {
-        var level1 = true;
-        var level2 = true;
-        var breathCheck = false;
-        var level3 = true;
+        level1 = true;
+        level2 = true;
+        breathCheck = false;
+        level3 = true;
+        canFire = true;
         constants.breathString = "";
+        constants.PLAYER_LIVES = 3;
+        breathCounter.breath = 10;
 
-        constants.SHARK_NUM = 3;
+        constants.SHARK_NUM = 2;
         for (var count = 0; count < constants.SHARK_NUM; count++) {
             clouds[count] = new objects.Shark(game);
         }
@@ -96,6 +111,9 @@ function changeState(state) {
         case constants.PLAY_STATE:
             currentStateFunction = states.playState;
             states.Play();
+            addHeartOne();
+            addHeartTwo();
+            addHeartThree();
             break;
         case constants.GAME_OVER_STATE:
             currentStateFunction = states.gameOverState;
@@ -108,19 +126,96 @@ function changeState(state) {
     }
 }
 
+function addHeartOne() {
+    var fullHeartIMG = new Image;
+    fullHeartIMG.src = "/assets/images/heartFull.png";
+
+    fullHeart1 = new createjs.Bitmap(fullHeartIMG);
+    fullHeart1.x = 0;
+    fullHeart1.y = 430;
+    game.addChild(fullHeart1);
+}
+
+function addHeartTwo() {
+    var fullHeartIMG = new Image;
+    fullHeartIMG.src = "/assets/images/heartFull.png";
+
+    fullHeart2 = new createjs.Bitmap(fullHeartIMG);
+    fullHeart2.x = 50;
+    fullHeart2.y = 430;
+    game.addChild(fullHeart2);
+}
+
+function addHeartThree() {
+    var fullHeartIMG = new Image;
+    fullHeartIMG.src = "/assets/images/heartFull.png";
+
+    fullHeart3 = new createjs.Bitmap(fullHeartIMG);
+    fullHeart3.x = 100;
+    fullHeart3.y = 430;
+    game.addChild(fullHeart3);
+}
+
+function addHeartFour() {
+    var fullHeartIMG = new Image;
+    fullHeartIMG.src = "/assets/images/heartFull.png";
+
+    fullHeart4 = new createjs.Bitmap(fullHeartIMG);
+    fullHeart4.x = 150;
+    fullHeart4.y = 430;
+    game.addChild(fullHeart4);
+}
+
+function addHeartFive() {
+    var fullHeartIMG = new Image;
+    fullHeartIMG.src = "/assets/images/heartFull.png";
+
+    fullHeart5 = new createjs.Bitmap(fullHeartIMG);
+    fullHeart5.x = 200;
+    fullHeart5.y = 430;
+    game.addChild(fullHeart5);
+}
+
+function removeHeartOne() {
+    game.removeChild(fullHeart1);
+}
+function removeHeartTwo() {
+    game.removeChild(fullHeart2);
+}
+function removeHeartThree() {
+    game.removeChild(fullHeart3);
+}
+function removeHeartFour() {
+    game.removeChild(fullHeart4);
+}
+function removeHeartFive() {
+    game.removeChild(fullHeart5);
+}
+
 function changeLevelTwo() {
     scoreboard.level = 2;
     while (level1) {
         constants.PLAYER_LIVES = 4;
         runLoop = true;
         scoreboard.lives += 1;
+        if (scoreboard.lives == 1) {
+            addHeartOne();
+        } else if (scoreboard.lives == 2) {
+            addHeartTwo();
+        } else if (scoreboard.lives == 3) {
+            addHeartThree();
+        } else if (scoreboard.lives == 4) {
+            addHeartFour();
+        } else if (scoreboard.lives == 5) {
+            addHeartFive();
+        }
         level1 = false;
 
         for (var count = 0; count < constants.SHARK_NUM; count++) {
             resetShark(clouds[count]);
         }
 
-        constants.SHARK_NUM = 5;
+        constants.SHARK_NUM = 4;
         for (var count = 0; count < constants.SHARK_NUM; count++) {
             clouds[count] = new objects.Shark(game);
         }
@@ -134,15 +229,30 @@ function changeLevelTwo() {
 function breathing() {
     breathCheck = true;
 
-    if (scoreboard.level == 2) {
+    if (scoreboard.level > 1) {
         if (breathCounter.breath <= 0) {
             scoreboard.lives -= 0.5;
+            createjs.Sound.play("gasp");
+            scoreboard.update();
+            if (scoreboard.lives > 4) {
+                removeHeartFive();
+            }
+            if (scoreboard.lives > 3) {
+                removeHeartFour();
+            } else if (scoreboard.lives > 2) {
+                removeHeartThree();
+            } else if (scoreboard.lives > 1) {
+                removeHeartTwo();
+            } else if (scoreboard.lives > 0) {
+                removeHeartOne();
+            }
             //play audio file here
         } else {
             breathCounter.breath -= 1;
         }
         constants.breathString = "\nBreath: " + breathCounter.breath;
     }
+    console.log(breathCounter.breath);
 }
 
 function resetShark(theShark) {
@@ -156,13 +266,25 @@ function changeLevelThree() {
         constants.PLAYER_LIVES = 5;
 
         scoreboard.lives += 1;
+        if (scoreboard.lives == 1) {
+            addHeartOne();
+        } else if (scoreboard.lives == 2) {
+            addHeartTwo();
+        } else if (scoreboard.lives == 3) {
+            addHeartThree();
+        } else if (scoreboard.lives == 4) {
+            addHeartFour();
+        } else if (scoreboard.lives == 5) {
+            addHeartFive();
+        }
         level2 = false;
+        canFire = false;
 
         for (var count = 0; count < constants.SHARK_NUM; count++) {
             resetShark(clouds[count]);
         }
 
-        constants.SHARK_NUM = 7;
+        constants.SHARK_NUM = 6;
         for (var count = 0; count < constants.SHARK_NUM; count++) {
             clouds[count] = new objects.Shark(game);
         }
@@ -229,6 +351,18 @@ function diverAndShark(theShark) {
 
     if (distance(p1, p2) <= ((Diver.height * 0.5) + (theShark.height * 0.5))) {
         createjs.Sound.play("bite");
+        if (scoreboard.lives == 5) {
+            removeHeartFive();
+        } else if (scoreboard.lives == 4) {
+            removeHeartFour();
+        } else if (scoreboard.lives == 3) {
+            removeHeartThree();
+        } else if (scoreboard.lives == 2) {
+            removeHeartTwo();
+        } else if (scoreboard.lives == 1) {
+            removeHeartOne();
+        }
+
         scoreboard.lives -= 1;
         theShark.reset();
     }
@@ -240,6 +374,27 @@ function collisionCheck() {
 
     for (var count = 0; count < constants.SHARK_NUM; count++) {
         diverAndShark(clouds[count]);
+        if (bullet != null) {
+            bulletAndShark(clouds[count], bullet);
+        }
+    }
+}
+
+// Check Collision with bullet and Shark
+function bulletAndShark(theShark, theBullet) {
+    var p1 = new createjs.Point();
+    var p2 = new createjs.Point();
+
+    p1.x = theBullet.x;
+    p1.y = theBullet.y;
+    p2.x = theShark.x;
+    p2.y = theShark.y;
+
+    if (distance(p1, p2) <= ((theBullet.height * 0.5) + (theShark.height * 0.5))) {
+        createjs.Sound.play("sharkDeath");
+
+        theBullet.remove();
+        theShark.reset();
     }
 }
 
