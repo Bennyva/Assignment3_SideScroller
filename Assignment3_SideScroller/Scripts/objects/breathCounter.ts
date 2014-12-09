@@ -10,13 +10,11 @@
 
 module objects {
     // Scoreboard Class, adds and creats it
-    export class Scoreboard {
+    export class Breathcounter {
         label: createjs.Text;
         labelString: string = "";
         game: createjs.Container;
-        lives: number = constants.PLAYER_LIVES;
-        score: number = 0;
-        level: number = 1;
+        breath: number = 10;
         width: number;
         height: number;
         constructor(game: createjs.Container) {
@@ -30,7 +28,7 @@ module objects {
         }
         //updates the score to the screen
         update() {
-            this.labelString = "Lives: " + this.lives.toString() + " Score: " + this.score.toString() + " Level: " + this.level.toString();
+            this.labelString = "\n" + constants.breathString;
             this.label.text = this.labelString;
         }
     }

@@ -9,12 +9,10 @@
 var objects;
 (function (objects) {
     // Scoreboard Class, adds and creats it
-    var Scoreboard = (function () {
-        function Scoreboard(game) {
+    var Breathcounter = (function () {
+        function Breathcounter(game) {
             this.labelString = "";
-            this.lives = constants.PLAYER_LIVES;
-            this.score = 0;
-            this.level = 1;
+            this.breath = 10;
             this.label = new createjs.Text(this.labelString, constants.GAME_FONT, constants.FONT_COLOUR);
             this.update();
             this.width = this.label.getBounds().width;
@@ -24,12 +22,12 @@ var objects;
             this.game.addChild(this.label);
         }
         //updates the score to the screen
-        Scoreboard.prototype.update = function () {
-            this.labelString = "Lives: " + this.lives.toString() + " Score: " + this.score.toString() + " Level: " + this.level.toString();
+        Breathcounter.prototype.update = function () {
+            this.labelString = "\n" + constants.breathString;
             this.label.text = this.labelString;
         };
-        return Scoreboard;
+        return Breathcounter;
     })();
-    objects.Scoreboard = Scoreboard;
+    objects.Breathcounter = Breathcounter;
 })(objects || (objects = {}));
-//# sourceMappingURL=scoreboard.js.map
+//# sourceMappingURL=breathCounter.js.map

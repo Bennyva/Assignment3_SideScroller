@@ -19,5 +19,8 @@ var constants;
     constants.PLAY_STATE = 1;
     constants.GAME_OVER_STATE = 2;
     constants.INSTRUCTIONS_STATE = 3;
+    constants.LEVEL2_STATE = 4;
+    constants.LEVEL2_STATE_PLAY = 5;
+    constants.breathString = "";
 })(constants || (constants = {}));
 //# sourceMappingURL=constants.js.map

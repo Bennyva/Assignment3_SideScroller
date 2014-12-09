@@ -15,7 +15,7 @@
 var states;
 (function (states) {
     //collision checks, removes cursor, updates sharks array
-    function playState() {
+    function playStateLevel2() {
         ocean.update();
         bubble.update();
         Diver.update();
@@ -37,13 +37,11 @@ var states;
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
         }
-
-        breathCounter.update();
     }
-    states.playState = playState;
+    states.playStateLevel2 = playStateLevel2;
 
     //creates the new objects, creates scoreboard, and adds them to the stage
-    function Play() {
+    function PlayLevel2() {
         game = new createjs.Container();
 
         ocean = new objects.Ocean(game);
@@ -54,12 +52,8 @@ var states;
             clouds[count] = new objects.Shark(game);
         }
 
-        scoreboard = new objects.Scoreboard(game);
-
-        breathCounter = new objects.Breathcounter(game);
-
         stage.addChild(game);
     }
-    states.Play = Play;
+    states.PlayLevel2 = PlayLevel2;
 })(states || (states = {}));
-//# sourceMappingURL=play.js.map
+//# sourceMappingURL=playLevel2.js.map

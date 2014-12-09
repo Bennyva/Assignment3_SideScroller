@@ -12,7 +12,7 @@
 /*
 *Source File Name: game.ts
 *Author:Benjamin Vanarragon
-*Last Modified: Nov 13th, 2014
+*Last Modified: Dec 3rd, 2014
 *Last Author: Benjamin Vanarragon
 *Decsription: This is the "main method" that runs the game and loops through the updates at 60 fps
 *
@@ -26,9 +26,16 @@ var bubble;
 var clouds = [];
 var ocean;
 var scoreboard;
-
+var breathCounter;
+var level1 = true;
+var level2 = true;
+var breathCheck = false;
+var level3 = true;
 var currentState;
 var currentStateFunction;
+var count = 0;
+var lungCapacity = 10;
+var runLoop = false;
 
 // Preload function
 function preload() {
@@ -54,6 +61,27 @@ function gameLoop(event) {
     //changeState(currentState);
     currentStateFunction();
     stage.update();
+
+    if (scoreboard.score == 0) {
+        var level1 = true;
+        var level2 = true;
+        var breathCheck = false;
+        var level3 = true;
+        constants.breathString = "";
+
+        constants.SHARK_NUM = 3;
+        for (var count = 0; count < constants.SHARK_NUM; count++) {
+            clouds[count] = new objects.Shark(game);
+        }
+    }
+
+    if (scoreboard.score == 1000) {
+        //level2 = true;
+        changeLevelTwo();
+    }
+    if (scoreboard.score == 3000) {
+        changeLevelThree();
+    }
 }
 
 //switches the states of the game
@@ -61,7 +89,9 @@ function changeState(state) {
     switch (state) {
         case constants.MENU_STATE:
             currentStateFunction = states.menuState;
+            states.Play();
             states.Menu();
+
             break;
         case constants.PLAY_STATE:
             currentStateFunction = states.playState;
@@ -75,6 +105,67 @@ function changeState(state) {
             currentStateFunction = states.instructionState;
             states.instruction();
             break;
+    }
+}
+
+function changeLevelTwo() {
+    scoreboard.level = 2;
+    while (level1) {
+        constants.PLAYER_LIVES = 4;
+        runLoop = true;
+        scoreboard.lives += 1;
+        level1 = false;
+
+        for (var count = 0; count < constants.SHARK_NUM; count++) {
+            resetShark(clouds[count]);
+        }
+
+        constants.SHARK_NUM = 5;
+        for (var count = 0; count < constants.SHARK_NUM; count++) {
+            clouds[count] = new objects.Shark(game);
+        }
+
+        window.setInterval(function () {
+            breathing();
+        }, 1000);
+    }
+}
+
+function breathing() {
+    breathCheck = true;
+
+    if (scoreboard.level == 2) {
+        if (breathCounter.breath <= 0) {
+            scoreboard.lives -= 0.5;
+            //play audio file here
+        } else {
+            breathCounter.breath -= 1;
+        }
+        constants.breathString = "\nBreath: " + breathCounter.breath;
+    }
+}
+
+function resetShark(theShark) {
+    theShark.reset();
+    game.removeChild(theShark);
+}
+
+function changeLevelThree() {
+    scoreboard.level = 3;
+    while (level2) {
+        constants.PLAYER_LIVES = 5;
+
+        scoreboard.lives += 1;
+        level2 = false;
+
+        for (var count = 0; count < constants.SHARK_NUM; count++) {
+            resetShark(clouds[count]);
+        }
+
+        constants.SHARK_NUM = 7;
+        for (var count = 0; count < constants.SHARK_NUM; count++) {
+            clouds[count] = new objects.Shark(game);
+        }
     }
 }
 
@@ -118,7 +209,11 @@ function diverAndBubble() {
     if (distance(p1, p2) <= ((Diver.height * 0.5) + (bubble.height * 0.5))) {
         createjs.Sound.play("pop");
         scoreboard.score += 100;
+
         bubble.reset();
+        if (breathCheck) {
+            breathCounter.breath += 3;
+        }
     }
 }
 

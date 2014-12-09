@@ -19,4 +19,8 @@ module constants {
     export var PLAY_STATE: number = 1;
     export var GAME_OVER_STATE: number = 2;
     export var INSTRUCTIONS_STATE: number = 3;
+    export var LEVEL2_STATE: number = 4;
+    export var LEVEL2_STATE_PLAY: number = 5;
+    export var breathString = "";
+
 } 

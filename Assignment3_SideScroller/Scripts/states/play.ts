@@ -38,6 +38,10 @@ module states {
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
         }
+
+        
+
+        breathCounter.update();
     }
     //creates the new objects, creates scoreboard, and adds them to the stage
     export function Play() {
@@ -53,6 +57,8 @@ module states {
         }
 
         scoreboard = new objects.Scoreboard(game); 
+
+        breathCounter = new objects.Breathcounter(game);
 
         stage.addChild(game);
     }

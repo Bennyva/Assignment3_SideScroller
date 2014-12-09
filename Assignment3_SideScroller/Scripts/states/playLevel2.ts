@@ -4,18 +4,19 @@
 /// <reference path="../objects/ocean.ts" />
 /// <reference path="../objects/Diver.ts" />
 /// <reference path="../objects/scoreboard.ts" />
+
 /*
-*Source File Name: play.ts
-*Author:Benjamin Vanarragon
-*Last Modified: Nov 13th, 2014
-*Last Author: Benjamin Vanarragon
-*Decsription: This sets the game into action, play state. removes mouse cursor. Updates the score board, and starts checking for collisions
-*
+    *Source File Name: play.ts
+    *Author:Benjamin Vanarragon
+    *Last Modified: Nov 13th, 2014
+    *Last Author: Benjamin Vanarragon
+    *Decsription: This sets the game into action, play state. removes mouse cursor. Updates the score board, and starts checking for collisions
+    *
 */
-var states;
-(function (states) {
+
+module states {
     //collision checks, removes cursor, updates sharks array
-    function playState() {
+    export function playStateLevel2() {
         ocean.update();
         bubble.update();
         Diver.update();
@@ -37,13 +38,10 @@ var states;
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
         }
-
-        breathCounter.update();
     }
-    states.playState = playState;
-
     //creates the new objects, creates scoreboard, and adds them to the stage
-    function Play() {
+    export function PlayLevel2() {
+
         game = new createjs.Container();
 
         ocean = new objects.Ocean(game);
@@ -54,12 +52,9 @@ var states;
             clouds[count] = new objects.Shark(game);
         }
 
-        scoreboard = new objects.Scoreboard(game);
-
-        breathCounter = new objects.Breathcounter(game);
+        
 
         stage.addChild(game);
     }
-    states.Play = Play;
-})(states || (states = {}));
-//# sourceMappingURL=play.js.map
+
+} 
