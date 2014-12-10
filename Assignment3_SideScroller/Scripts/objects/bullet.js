@@ -34,8 +34,10 @@ var objects;
 
         //updates the image frame by frame to make it appear as if its moving
         Bullet.prototype.update = function () {
+            stage.removeEventListener("click", states.shootBullet);
             this.x += this.dx;
             if (this.x >= (640)) {
+                stage.addEventListener("click", states.shootBullet);
                 this.remove();
             }
         };

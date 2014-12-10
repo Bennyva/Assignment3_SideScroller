@@ -29,14 +29,17 @@ module objects {
         }
         //resets the image 
         remove() {
+
             this.x = 10000;
             
             
         }
         //updates the image frame by frame to make it appear as if its moving
         update() {
+            stage.removeEventListener("click", states.shootBullet);
             this.x += this.dx;
             if (this.x >= (640)) {
+                stage.addEventListener("click", states.shootBullet);
                 this.remove();
             }
 

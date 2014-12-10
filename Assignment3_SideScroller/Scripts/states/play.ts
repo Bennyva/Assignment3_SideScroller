@@ -62,23 +62,14 @@ module states {
         bubble = new objects.Bubble(game);
         Diver = new objects.Diver(game);
 
-        
 
 
-                
-                ocean.addEventListener("click", function (e) {
 
-                    DiverXY.x = Diver.x;
-                    DiverXY.y = Diver.y;
-                    if (canFire == false) {
-                        bullet = new objects.Bullet(game);
-                        createjs.Sound.play("bulletSound");
-                    }
-                    //canFire = false;
-                });
+
+        stage.addEventListener("click", shootBullet);
 
             
-        
+         
 
         for (var count = 0; count < constants.SHARK_NUM; count++) {
             clouds[count] = new objects.Shark(game);
@@ -89,6 +80,17 @@ module states {
         breathCounter = new objects.Breathcounter(game);
 
         stage.addChild(game);
+    }
+
+    export function shootBullet(event) {
+        
+        DiverXY.x = Diver.x;
+        DiverXY.y = Diver.y;
+        if (canFire == false) {
+            
+            bullet = new objects.Bullet(game);
+            createjs.Sound.play("bulletSound");
+        }
     }
 
 } 
