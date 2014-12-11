@@ -69,13 +69,10 @@ function init(): void {
     createjs.Ticker.setFPS(60);
     createjs.Ticker.addEventListener("tick", gameLoop);
 
-
-
     currentState = constants.MENU_STATE;
     changeState(currentState);
 
-
-    
+    createjs.Sound.play("gameSong", 0, 0, 0, 0, 0.1, 0);
     gameStart();
 
 
@@ -90,7 +87,7 @@ function gameLoop(event): void {
     breathCounter.update();
 
 
-
+    //reset variables
     if (scoreboard.score == 0) {
         level1 = true;
         level2 = true;
@@ -151,7 +148,7 @@ function changeState(state: number) {
 
     }
 }
-
+//add hearts 
 function addHeartOne() {
     var fullHeartIMG = new Image;
     fullHeartIMG.src = "/assets/images/heartFull.png";
@@ -164,13 +161,10 @@ function addHeartOne() {
 
 
 }
-
+//add hearts 
 function addHeartTwo() {
     var fullHeartIMG = new Image;
     fullHeartIMG.src = "/assets/images/heartFull.png";
-
-    
-    
 
     fullHeart2 = new createjs.Bitmap(fullHeartIMG);
     fullHeart2.x = 50;
@@ -178,7 +172,7 @@ function addHeartTwo() {
     game.addChild(fullHeart2);
 
 }
-
+//add hearts 
 function addHeartThree() {
     var fullHeartIMG = new Image;
     fullHeartIMG.src = "/assets/images/heartFull.png";
@@ -189,7 +183,7 @@ function addHeartThree() {
     fullHeart3.y = 430;
     game.addChild(fullHeart3);
 }
-
+//add hearts 
 function addHeartFour() {
     var fullHeartIMG = new Image;
     fullHeartIMG.src = "/assets/images/heartFull.png";
@@ -200,7 +194,7 @@ function addHeartFour() {
     fullHeart4.y = 430;
     game.addChild(fullHeart4);
 }
-
+//add hearts 
 function addHeartFive() {
     var fullHeartIMG = new Image;
     fullHeartIMG.src = "/assets/images/heartFull.png";
@@ -212,23 +206,28 @@ function addHeartFive() {
     game.addChild(fullHeart5);
 }
 
-
+//remove hearts
 function removeHeartOne() {
     game.removeChild(fullHeart1);
 }
+//remove hearts
 function removeHeartTwo() {
     game.removeChild(fullHeart2);
 }
+//remove hearts
 function removeHeartThree() {
     game.removeChild(fullHeart3);
 }
+//remove hearts
 function removeHeartFour() {
     game.removeChild(fullHeart4);
 }
+//remove hearts
 function removeHeartFive() {
     game.removeChild(fullHeart5);
 }
 
+//changes different settings for level 2
 function changeLevelTwo() {
     
     scoreboard.level = 2;
@@ -271,31 +270,33 @@ function changeLevelTwo() {
     
 }
 
-
+//removes 1 second of breath every second
 function breathing() {
     breathCheck = true;
 
     if (scoreboard.level > 1) {
 
         if (breathCounter.breath <= 0) {
-            scoreboard.lives -= 0.5;
-            createjs.Sound.play("gasp");
-            scoreboard.update();
-            if (scoreboard.lives > 4) {
+            if (scoreboard.lives == 5) {
                 removeHeartFive();
             }
-            if (scoreboard.lives > 3) {
+            else if (scoreboard.lives == 4) {
                 removeHeartFour();
             }
-            else if (scoreboard.lives >2) {
+            if (scoreboard.lives == 3) {
                 removeHeartThree();
             }
-            else if (scoreboard.lives >1) {
+            else if (scoreboard.lives == 2) {
                 removeHeartTwo();
             }
-            else if (scoreboard.lives >0) {
+            else if (scoreboard.lives == 1) {
                 removeHeartOne();
             }
+            scoreboard.lives -= 1;
+            createjs.Sound.play("gasp");
+            scoreboard.update();
+            
+            
             
             
             //play audio file here
@@ -309,13 +310,14 @@ function breathing() {
     }
 
 
-
+//resets the shark 
 function resetShark(theShark: objects.Shark) {
     theShark.reset();
     game.removeChild(theShark);
     
 }
 
+//changes certain settings for level 3, ex: enables shooting
 function changeLevelThree() {
    
     scoreboard.level = 3;

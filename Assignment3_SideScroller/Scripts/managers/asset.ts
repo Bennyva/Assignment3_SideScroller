@@ -12,7 +12,7 @@ module managers {
 
         static loader;
         static atlas: createjs.SpriteSheet;
-
+        //adds sprite sheet data
         static spriteSheetData = 
         {
             "images": ["/assets/images/atlasDiver.png"],
@@ -38,6 +38,7 @@ module managers {
             },
 
         }
+        //adding more assets
         static manifest = [
             { id: "ocean", src: "assets/images/ocean.png" },
             { id: "startBtn", src: "assets/images/buttonStart.png" },

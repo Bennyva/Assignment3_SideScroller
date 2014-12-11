@@ -34,6 +34,7 @@ var states;
             stage.removeChild(game);
             game.removeAllChildren();
             game.removeAllEventListeners();
+            stage.removeEventListener("click", states.shootBullet);
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
         }
@@ -68,6 +69,7 @@ var states;
     }
     states.Play = Play;
 
+    //moves the bullet across the screen
     function shootBullet(event) {
         DiverXY.x = Diver.x;
         DiverXY.y = Diver.y;

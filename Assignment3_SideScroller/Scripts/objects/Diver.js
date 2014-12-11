@@ -14,6 +14,7 @@ var __extends = this.__extends || function (d, b) {
 };
 var objects;
 (function (objects) {
+    //creates the diver object
     var Diver = (function (_super) {
         __extends(Diver, _super);
         function Diver(game) {
@@ -21,9 +22,9 @@ var objects;
             this.y = 430;
 
             this.game.addChild(this);
-
-            createjs.Sound.play("water", 0, 0, 0, -1, 0.4, 0);
-            createjs.Sound.play("gameSong", 0, 0, 0, -1, 0.1, 0);
+            this.regX = this.getBounds().width * 0.5;
+            this.regY = this.getBounds().height * 0.5;
+            createjs.Sound.play("water", 0, 0, 0, -1, 0.2, 0);
         }
         //updates the player to where the mouse cursor is
         Diver.prototype.update = function () {

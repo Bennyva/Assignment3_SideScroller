@@ -35,6 +35,7 @@ module states {
             stage.removeChild(game);
             game.removeAllChildren();
             game.removeAllEventListeners();
+            stage.removeEventListener("click", states.shootBullet);
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
         }
@@ -52,24 +53,13 @@ module states {
     //creates the new objects, creates scoreboard, and adds them to the stage
     export function Play() {
 
-
-
-        
-
         game = new createjs.Container();
 
         ocean = new objects.Ocean(game);
         bubble = new objects.Bubble(game);
         Diver = new objects.Diver(game);
 
-
-
-
-
         stage.addEventListener("click", shootBullet);
-
-            
-         
 
         for (var count = 0; count < constants.SHARK_NUM; count++) {
             clouds[count] = new objects.Shark(game);
@@ -82,6 +72,7 @@ module states {
         stage.addChild(game);
     }
 
+    //moves the bullet across the screen
     export function shootBullet(event) {
         
         DiverXY.x = Diver.x;

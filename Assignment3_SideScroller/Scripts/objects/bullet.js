@@ -23,6 +23,8 @@ var objects;
             this.height = this.getBounds().height;
             this.x = DiverXY.x;
             this.y = DiverXY.y;
+            this.regX = this.getBounds().width * 0.5;
+            this.regY = this.getBounds().height * 0.5;
             this.game = game;
             this.dx = 5;
             this.game.addChild(this);

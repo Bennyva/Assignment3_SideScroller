@@ -40,16 +40,19 @@ var states;
         var imgInstructions = new Image;
         imgInstructions.src = "/assets/images/buttonInstructions.png";
 
+        //creates start button
         startGame = new createjs.Bitmap(imgStart);
         startGame.x = stage.canvas.width * 0.25;
         startGame.y = stage.canvas.height * 0.10;
         game.addChild(startGame);
 
+        //creates instructions btn
         instructions = new createjs.Bitmap(imgInstructions);
         instructions.x = stage.canvas.width * 0.18;
         instructions.y = stage.canvas.height * 0.50;
         game.addChild(instructions);
 
+        //click event listenter
         startGame.addEventListener("click", function (e) {
             stage.removeChild(game);
             game.removeAllChildren();
@@ -58,6 +61,7 @@ var states;
             changeState(currentState);
         });
 
+        //click event listener
         instructions.addEventListener("click", function (e) {
             stage.removeChild(game);
             game.removeAllChildren();

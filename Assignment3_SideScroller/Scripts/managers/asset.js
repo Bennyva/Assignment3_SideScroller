@@ -39,6 +39,7 @@ var managers;
                 "shark": [6]
             }
         };
+
         Asset.manifest = [
             { id: "ocean", src: "assets/images/ocean.png" },
             { id: "startBtn", src: "assets/images/buttonStart.png" },

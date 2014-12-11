@@ -15,6 +15,8 @@ module objects {
         dx: number;
         constructor(game:createjs.Container) {
             super("shark", game);
+            this.regX = this.getBounds().width * 0.5;
+            this.regY = this.getBounds().height * 0.5;
             this.game.addChild(this);
             this.reset();
         }

@@ -19,6 +19,8 @@ var objects;
         __extends(Shark, _super);
         function Shark(game) {
             _super.call(this, "shark", game);
+            this.regX = this.getBounds().width * 0.5;
+            this.regY = this.getBounds().height * 0.5;
             this.game.addChild(this);
             this.reset();
         }

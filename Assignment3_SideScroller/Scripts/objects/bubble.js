@@ -20,14 +20,18 @@ var objects;
         function Bubble(game) {
             _super.call(this, "bubble", game);
             this.dy = 5;
+            this.regX = this.getBounds().width * 0.5;
+            this.regY = this.getBounds().height * 0.5;
             this.game.addChild(this);
             this.reset();
         }
+        //resets the bubble to the edge of the window
         Bubble.prototype.reset = function () {
             this.x = stage.canvas.width + this.width;
             this.y = Math.floor(Math.random() * stage.canvas.height);
         };
 
+        //moved the bubble to the left
         Bubble.prototype.update = function () {
             this.x -= this.dy;
             if (this.x <= (0 - this.width)) {
